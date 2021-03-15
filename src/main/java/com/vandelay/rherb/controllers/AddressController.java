@@ -21,7 +21,7 @@ public class AddressController {
     }
 
     @GetMapping
-    public PageableResponse getAllAddresses(HttpServletRequest request, int page, int pageSize) {
+    public PageableResponse getAllAddresses(HttpServletRequest request, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int pageSize) {
         return new PageableResponse("addresses", addressService.findAll(page, pageSize), request.getRequestURL().toString());
     }
 

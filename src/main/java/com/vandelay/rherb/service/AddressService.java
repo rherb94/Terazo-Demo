@@ -46,7 +46,6 @@ public class AddressService {
                 .zipPostalCode(addressDto.getZipPostalCode())
                 .country(addressDto.getCountry())
                 .build();
-
         addressRepository.save(address);
         return address;
     }
@@ -59,7 +58,6 @@ public class AddressService {
         List<Warehouse> warehouses = warehouseRepository.findAllByAddressId(addressId);
         if (warehouses.size() > 0)
             throw new UnsupportedOperationException("Can't delete Address with id: " + addressId + " because it is in use by a Warehouse!");
-
         addressRepository.deleteById(addressId);
     }
 
@@ -73,7 +71,6 @@ public class AddressService {
         address.setStateProvince(addressDto.getStateProvince());
         address.setZipPostalCode(addressDto.getZipPostalCode());
         address.setCountry(addressDto.getCountry());
-
         addressRepository.save(address);
         return address;
     }

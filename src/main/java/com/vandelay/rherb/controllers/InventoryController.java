@@ -21,7 +21,7 @@ public class InventoryController {
     }
 
     @GetMapping
-    public PageableResponse getAllInventory(HttpServletRequest request, int page, int pageSize) {
+    public PageableResponse getAllInventory(HttpServletRequest request, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int pageSize) {
         return new PageableResponse("inventory", inventoryService.findAll(page, pageSize), request.getRequestURL().toString());
     }
 
@@ -31,7 +31,7 @@ public class InventoryController {
     }
 
     @GetMapping("/warehouse")
-    public PageableResponse getInventoryByWarehouseId(HttpServletRequest request, @RequestParam int page, @RequestParam int pageSize, @RequestParam Long warehouseId) {
+    public PageableResponse getInventoryByWarehouseId(HttpServletRequest request,@RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int pageSize, @RequestParam Long warehouseId) {
         return new PageableResponse("inventory/warehouse", inventoryService.findAllByWarehouseId(page, pageSize, warehouseId), request.getRequestURL().toString());
     }
 

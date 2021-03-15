@@ -15,7 +15,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @JsonInclude(JsonInclude.Include.NON_EMPTY)
-public class Address {
+public class  Address {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

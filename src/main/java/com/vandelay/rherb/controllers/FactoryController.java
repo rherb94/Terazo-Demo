@@ -21,7 +21,7 @@ public class FactoryController {
     }
 
     @GetMapping
-    public PageableResponse getAllFactories(HttpServletRequest request, int page, int pageSize) {
+    public PageableResponse getAllFactories(HttpServletRequest request, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int pageSize) {
         return new PageableResponse("factories", factoryService.getAllFactories(page, pageSize), request.getRequestURL().toString());
     }
 

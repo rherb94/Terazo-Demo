@@ -55,7 +55,7 @@ public class MachineService {
     @Transactional
     public Machine modifyMachine(MachineDto machineDto, Long machineId) {
         Machine machine = machineRepository.findById(machineId).orElseThrow(()-> new ItemNotFoundException("Could not find machine with id: " + machineId));
-        Factory factory = factoryRepository.findById(machineDto.getFactoryId()).orElseThrow(() -> new ItemNotFoundException("Count not find Warehouse with id: " + machineDto.getFactoryId()));
+        Factory factory = factoryRepository.findById(machineDto.getFactoryId()).orElseThrow(() -> new ItemNotFoundException("Count not find Factory with id: " + machineDto.getFactoryId()));
 
         machine.setDescription(machineDto.getDescription());
         machine.setName(machineDto.getName());

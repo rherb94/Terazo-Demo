@@ -21,7 +21,7 @@ public class WarehouseController {
     }
 
     @GetMapping
-    public PageableResponse getAllWarehouses(HttpServletRequest request, int page, int pageSize) {
+    public PageableResponse getAllWarehouses(HttpServletRequest request, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int pageSize) {
         return new PageableResponse("warehouses", warehouseService.getAllWarehouses(page, pageSize), request.getRequestURL().toString());
     }
 

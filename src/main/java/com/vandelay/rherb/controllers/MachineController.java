@@ -19,7 +19,7 @@ public class MachineController {
     }
 
     @GetMapping
-    public PageableResponse getAllMachines(HttpServletRequest request, int page, int pageSize) {
+    public PageableResponse getAllMachines(HttpServletRequest request, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int pageSize) {
         return new PageableResponse("machines", machineService.findAll(page, pageSize), request.getRequestURL().toString());
     }
 
@@ -29,7 +29,7 @@ public class MachineController {
     }
 
     @GetMapping("/factory")
-    public PageableResponse getMachinesByFactoryId(HttpServletRequest request, @RequestParam int page, @RequestParam int pageSize, @RequestParam Long factoryId) {
+    public PageableResponse getMachinesByFactoryId(HttpServletRequest request, @RequestParam(defaultValue = "0") int page, @RequestParam(defaultValue = "100") int pageSize, @RequestParam Long factoryId) {
         return new PageableResponse("machines/factory", machineService.findAllByFactoryId(page, pageSize, factoryId), request.getRequestURL().toString());
     }
 
