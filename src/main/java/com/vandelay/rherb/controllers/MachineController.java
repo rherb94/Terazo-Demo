@@ -5,6 +5,7 @@ import com.vandelay.rherb.domain.PageableResponse;
 import com.vandelay.rherb.dto.MachineDto;
 import com.vandelay.rherb.service.MachineService;
 import io.swagger.annotations.ApiParam;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,9 +24,9 @@ public class MachineController {
         return new PageableResponse("machines", machineService.findAll(page, pageSize), request.getRequestURL().toString());
     }
 
-    @GetMapping("/{id}")
-    public Machine getMachine(@PathVariable Long id) {
-        return machineService.findById(id);
+    @GetMapping("/{machineId}")
+    public Machine getMachine(@PathVariable Long machineId) {
+        return machineService.findById(machineId);
     }
 
     @GetMapping("/factory")
@@ -34,6 +35,7 @@ public class MachineController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Machine createMachine(@ApiParam(value = "valid Factory JSON") @RequestBody MachineDto machineDto) {
         return machineService.createMachine(machineDto);
     }

@@ -44,9 +44,9 @@ public class DataLoader implements CommandLineRunner {
     private void loadData() {
         Address address = Address.builder()
                 .buildingName("Pier 10")
-                .city("Detroit")
-                .stateProvince("MI")
-                .streetLine1("8 warehouse circle")
+                .city("New York")
+                .stateProvince("NY")
+                .streetLine1("186 West 81st Street")
                 .zipPostalCode("90210")
                 .build();
 

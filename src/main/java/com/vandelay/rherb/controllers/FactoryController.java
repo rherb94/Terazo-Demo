@@ -6,6 +6,7 @@ import com.vandelay.rherb.dto.FactoryDto;
 import com.vandelay.rherb.service.FactoryService;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,12 +26,13 @@ public class FactoryController {
         return new PageableResponse("factories", factoryService.getAllFactories(page, pageSize), request.getRequestURL().toString());
     }
 
-    @GetMapping("/{id}")
-    public Factory getFactory(@PathVariable Long id) {
-        return factoryService.getFactory(id);
+    @GetMapping("/{factoryId}")
+    public Factory getFactory(@PathVariable Long factoryId) {
+        return factoryService.getFactory(factoryId);
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Factory createFactory(@ApiParam(value = "valid Factory JSON") @RequestBody FactoryDto factoryDto) {
         return factoryService.createFactory(factoryDto);
     }

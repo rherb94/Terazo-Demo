@@ -6,6 +6,7 @@ import com.vandelay.rherb.dto.InventoryDto;
 import com.vandelay.rherb.service.InventoryService;
 import io.swagger.annotations.ApiParam;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -25,9 +26,9 @@ public class InventoryController {
         return new PageableResponse("inventory", inventoryService.findAll(page, pageSize), request.getRequestURL().toString());
     }
 
-    @GetMapping("/{id}")
-    public Inventory getInventory(@PathVariable Long id) {
-        return inventoryService.findById(id);
+    @GetMapping("/{inventoryId}")
+    public Inventory getInventory(@PathVariable Long inventoryId) {
+        return inventoryService.findById(inventoryId);
     }
 
     @GetMapping("/warehouse")
@@ -36,6 +37,7 @@ public class InventoryController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Inventory createInventory(@ApiParam(value = "valid Inventory Json") @RequestBody InventoryDto inventoryDto) {
         log.debug("inventoryDto: " + inventoryDto);
         return inventoryService.createInventory(inventoryDto);
