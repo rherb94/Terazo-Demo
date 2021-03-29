@@ -41,6 +41,7 @@ public class MachineController {
     }
 
     @DeleteMapping("/{machineId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteMachine(@PathVariable Long machineId){ machineService.deleteMachine(machineId);}
 
     @PutMapping("/{machineId}")

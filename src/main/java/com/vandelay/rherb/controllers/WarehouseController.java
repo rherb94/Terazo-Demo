@@ -46,6 +46,7 @@ public class WarehouseController {
     }
 
     @DeleteMapping("/{warehouseId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteWarehouse(@PathVariable Long warehouseId) {
         warehouseService.deleteWarehouse(warehouseId);
     }

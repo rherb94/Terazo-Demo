@@ -44,6 +44,7 @@ public class InventoryController {
     }
 
     @DeleteMapping("/{inventoryId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteInventory(@PathVariable Long inventoryId) {
         inventoryService.deleteInventory(inventoryId);
     }

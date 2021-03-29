@@ -38,6 +38,7 @@ public class FactoryController {
     }
 
     @DeleteMapping("/{factoryId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     public void deleteFactory(@PathVariable Long factoryId){factoryService.deleteFactory(factoryId);}
 
     @PutMapping("/{factoryId}")
