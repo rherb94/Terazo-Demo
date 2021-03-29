@@ -33,7 +33,7 @@ public class SwaggerConfig {
                         "The Vandelay Industries API platform, documented here, represents a unified view of its ERP and CRM systems for use by both internal applications and 3rd-party strategic partner system integrations.")
                 .termsOfServiceUrl("")
                 .version("0.0.1")
-                .contact(new Contact("Ryan Herb", "https://github.com/rherb94/Terazo-Demo", "rherb94@gmail.com"))
+                .contact(new Contact("Ryan Herb", "https://github.com/rherb94/Vandelay-API", "rherb94@gmail.com"))
                 .build();
     }
 }
