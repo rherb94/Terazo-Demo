@@ -31,7 +31,8 @@ public class MachineService {
     }
 
     public Page<Machine> findAllByFactoryId(int page, int pageSize, Long id) {
-        return machineRepository.findAllByFactoryId(PageRequest.of(page, pageSize), id);
+        Factory factory = factoryRepository.findById(id).orElseThrow(()-> new ItemNotFoundException("Could not find Factory with id: " + id));
+        return machineRepository.findAllByFactoryId(PageRequest.of(page, pageSize), factory.getId());
     }
 
     @Transactional

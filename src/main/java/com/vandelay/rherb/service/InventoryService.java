@@ -32,7 +32,8 @@ public class InventoryService {
     }
 
     public Page<Inventory> findAllByWarehouseId(int page, int pageSize, Long id) {
-        return inventoryRepository.findAllByWarehouseId(PageRequest.of(page, pageSize), id);
+        Warehouse warehouse = warehouseRepository.findById(id).orElseThrow(() -> new ItemNotFoundException("Count not find Warehouse with id: " + id));
+        return inventoryRepository.findAllByWarehouseId(PageRequest.of(page, pageSize), warehouse.getId());
     }
 
     @Transactional
